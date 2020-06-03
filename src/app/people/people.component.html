@@ -1,11 +1,17 @@
 <div id="search-component">
   <h4><label for="search-box">People Search</label></h4>
   <input #searchBox id="search-box" (input)="searchTerm$.next($event.target.value)" />
+  <div>
+    <label for="fav_counter">Favorites Counter</label>
+    <button id="fav_counter">{{ favCounter }}</button>
+  </div>
 </div>
+<p> Please click on the thumbs down icon to add to your favorites, click again to remove from favorites</p>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col"></th>
       <th scope="col">Birthday</th>
       <th scope="col">Home World</th>
     </tr>
@@ -13,6 +19,7 @@
   <tbody>
     <tr *ngFor="let person of people; index as i">
       <td>{{ person.name }}</td>
+      <td><span class="fav"><i (click)="toggleClass($event, person.name)" class="fa fa-thumbs-down"></i></span></td>
       <td>{{ person.birth_year }}</td>
       <td>{{ person.homeworld }}</td>
     </tr>

@@ -1,0 +1,29 @@
+.fav {
+  text-align:right;
+  margin-right: 1em;
+}
+
+.fa {
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color:#77FF33;
+}
+
+#search-component {
+  margin:15px 0 20px 0;
+  display:flex;
+  justify-content:space-evenly;
+}
+
+#search-component  input {
+  width:300px;
+}
+
+#fav_counter {
+  margin-left:15px;
+}
+

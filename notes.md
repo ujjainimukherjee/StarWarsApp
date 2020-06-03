@@ -22,3 +22,11 @@ For performance improvement in search- to prevent API calls everytime a user typ
 
 - debounce to provide delay of 300 ms
 - distinctUntilChanged  and switchMap
+
+# Add a favorites Counter
+
+Added a font awesome icon as a favorites indicator for each person. At the time of page load, all the icons show thumbs down because nothing has been added to favorites.
+When someone clicks on thumbs down, it becomes thumbs up, the person is added to in memory Favorites list and counter increases by 1.
+When someone clicks on thumbs up, it becomes thumbs down, the person is removed from in memory Favorites list and counter decreases by 1
+
+The list of Favorite persons is stored in memory on client side in 'favPersons' array in people.component.ts

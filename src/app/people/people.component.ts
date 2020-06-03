@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import { PeopleService } from '../people.service';
@@ -12,12 +12,39 @@ export class PeopleComponent implements OnInit {
   people: Array<object>;
   totalCount: number;
   searchTerm$ = new Subject<string>();
+  favCounter: number = 0;
+  favPersons: Array<string> = [];
 
-  constructor(private peopleService: PeopleService) {}
+  constructor(
+    private renderer: Renderer2,
+    private peopleService: PeopleService
+  ) {}
 
   ngOnInit(): void {
     this.getPeople();
     this.getSearchResults();
+  }
+
+  /**
+   * toggle Class when user clicks on thumbs up and thumbs down icon
+   * @param event toggle
+   * @param personName
+   */
+  toggleClass(event: any, personName: string): void {
+    const tgt = event.target;
+    const hasClass = tgt.classList.contains('fa-thumbs-up');
+    if (hasClass) {
+      this.renderer.removeClass(tgt, 'fa-thumbs-up');
+      this.renderer.addClass(tgt, 'fa-thumbs-down');
+      this.favCounter--;
+      this.favPersons = this.favPersons.filter(el => el !== personName);
+    } else {
+      this.renderer.addClass(tgt, 'fa-thumbs-up');
+      this.renderer.removeClass(tgt, 'fa-thumbs-down');
+      this.favCounter++;
+      this.favPersons.push(personName);
+    }
+    console.log('The current list of favorite persons is ', this.favPersons);
   }
 
   /**
@@ -29,7 +56,6 @@ export class PeopleComponent implements OnInit {
       this.totalCount = response.count;
     });
   }
-
 
   /**
    * get people on component init
