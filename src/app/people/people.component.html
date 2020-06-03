@@ -1,0 +1,17 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Home World</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of people; index as i">
+      <td>{{ person.name }}</td>
+      <td>{{ person.birth_year }}</td>
+      <td>{{ person.homeworld }}</td>
+    </tr>
+  </tbody>
+</table>

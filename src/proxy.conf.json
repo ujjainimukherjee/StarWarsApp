@@ -1,0 +1,6 @@
+{
+  "/people/": {
+    "target": "https://swapi.dev/api/",
+    "secure": false
+  }
+}
