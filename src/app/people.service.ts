@@ -15,22 +15,25 @@ export class PeopleService {
   /**
    * get People from swapi backend
    */
-  getPeople(): Observable<any> {
+  getPeople(pageNum?: number): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
 
-    return this.http.get<any>(this.peopleUrl, httpOptions).pipe(
+    const page_number = pageNum ? pageNum : 1
+    const url = `${this.peopleUrl}?page=${page_number}`;
+    return this.http.get<any>(url, httpOptions).pipe(
       map((response: any) => {
-        return response.results.map(
+        let persons = response.results.map(
           ({ name, birth_year, homeworld }) => ({
             name,
             birth_year,
-            homeworld
+            homeworld: homeworld.replace(/localhost:4200/gi, 'swapi.dev'),
           })
         );
+        return { count: response.count, persons };
       }),
       catchError(this.handleError<any>('fetch people data'))
     );

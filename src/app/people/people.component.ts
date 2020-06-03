@@ -8,6 +8,7 @@ import { PeopleService } from '../people.service';
 })
 export class PeopleComponent implements OnInit {
   people: Array<object>;
+  totalCount: number;
 
   constructor(private peopleService: PeopleService) {}
 
@@ -15,9 +16,24 @@ export class PeopleComponent implements OnInit {
     this.getPeople();
   }
 
+  /**
+   * get people on component init
+   */
   getPeople(): void {
-    this.peopleService.getPeople().subscribe(response => {
-      this.people = response;
+    this.peopleService.getPeople().subscribe((response) => {
+      this.people = response.persons;
+      this.totalCount = response.count;
+    });
+  }
+
+  /**
+   * gets the list of persons based on page number
+   * @param pageNum
+   */
+  getPageFromPeopleService(pageNum): void {
+    this.peopleService.getPeople(pageNum).subscribe((response) => {
+      this.people = response.persons;
+      this.totalCount = response.count;
     });
   }
 }
