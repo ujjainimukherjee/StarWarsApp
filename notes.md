@@ -1,13 +1,14 @@
 # Use Cases
 
+* To start the app type 'ng serve'
 * http://localhost:4200/ is the home page. It shows the list of users from star wars API. It will show 10 records only.
 * To see more records, use the Pagination component at the bottom which will fetch 10 records at a time from SWAPI
-* You can also search using any user name. eg. as you type - 'Skywalker' you can see only 3 records which contain the name 'Skywalker'
+* You can also search using any user name. eg. as you type - 'Skywalker' you will see only 3 records which contain the name 'Skywalker'
 * All records have a thumbs down icon beside them. If you click on any icon, the icon changes to thumbs up and 
-  - the counter button on the right hand side has it's value incremented by 1.
-  - the corresponding person is added to the favorites list
-* The thumbs up and thumbs down icon may be clicked to toggle the states between favorite and not favorite
-* If you click on the 'Counter' button, you will go to the Favorites page which shows the list of Favorite  people
+  - the counter button has it's value incremented by 1.
+  - the  person who has been favorited, is added to the favorites list
+* The thumbs up/thumbs down icon may be clicked to toggle the states between favorite and not favorite
+* If you click on the 'Counter' button, you will be redirected to the 'Favorites' page,  which shows the list of Favorite  people
 * There is a 'Go Back' button which will take the user back to the first page. State is maintained between 2 pages.
 
 # Fetch People data
@@ -21,15 +22,14 @@ Created a service 'people.service.ts' to fetch people data from swapi. To get ri
 Used Angular BootStrap Pagination component - https://ng-bootstrap.github.io/#/components/pagination/overview
 
 A sample url to get persons list using a page number is - https://swapi.dev/api/people/?page=4
-This url was used in 'people.service.ts'.
+This url was used in 'people.service.ts' to fetch data.
 
 # Add Search Functionality
 
 A sample url for search for a person named 'Walker' is - https://swapi.dev/api/people/?search=walker
+This functionality has been implemented in 'people.service.ts'.
 
-This has been implemented in 'people.service.ts'.
-
-For performance improvement in search- to prevent API calls everytime a user types something, 
+For performance improvement in search-(i.e. to prevent API calls everytime a user types something), 
 3 'rxjs' operators have been used
 
 - debounce to provide delay of 300 ms
@@ -37,7 +37,7 @@ For performance improvement in search- to prevent API calls everytime a user typ
 
 # Add a favorites Counter
 
-Added a font awesome icon as a favorites indicator for each person. At the time of page load, all the icons show thumbs down because nothing has been added to favorites.
+Added a 'font awesome' icon as a favorites indicator for each person. At the time of page load, all the icons show thumbs down because nothing has been added to favorites.
 When someone clicks on thumbs down, it becomes thumbs up, the person is added to in memory Favorites list and counter increases by 1.
 When someone clicks on thumbs up, it becomes thumbs down, the person is removed from in memory Favorites list and counter decreases by 1
 
