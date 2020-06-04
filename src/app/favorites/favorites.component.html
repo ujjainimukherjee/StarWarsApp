@@ -1,0 +1,13 @@
+<div id="favorite_header">
+<h3>List of Favorite Persons</h3>
+<button id="back_btn" (click)="goBack()">Go Back</button>
+</div>
+<table class="table favorites_table">
+  <tbody>
+    <tr *ngFor="let person of favorites">
+      <td>{{ person }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
