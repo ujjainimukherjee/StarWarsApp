@@ -50,9 +50,12 @@ For redirection, I have used Angular Router.
 I have created a 'Favorites' Component.
 'http://localhost:4200' takes user to first page
 'http://localhost:4200/Favorites' takes user to Favorites page.
-In the first page, I have added a counter button on the right. When user marks some user as favorite, the counter increases. When user clicks on the button, (s)he goes to 'Favorites' page. This page will show the list of Favorite people. This page also has a back button which will take the user to the previous page.
+In the first page, I have added a counter button on the right. When user marks some user as favorite, the counter increases. When user clicks on the button, (s)he goes to 'Favorites' page. This page will show the list of Favorite people. The Favorites page also has a back button which will take the user to the previous page.
 To maintain state between 2 components, I have used a service - 'favorites.service.ts'
 
+# Items I could not finish
 
-Added a button which holds the counter for favorites. When user 
+* Sort the favorites list with drag and drop
+* Show a loading spinner when page loads
+
 
